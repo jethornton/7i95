@@ -1,0 +1,5 @@
+src/7i95 usr/bin
+src/7i95.ui usr/lib/lib7i95
+src/lib7i95/*.* usr/lib/python3/dist-packages/lib7i95
+src/firmware/*.* usr/lib/lib7i95
+*.desktop usr/share/applications
