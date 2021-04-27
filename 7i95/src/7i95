@@ -1,0 +1,104 @@
+#!/usr/bin/env python3
+
+import sys, os, subprocess
+from functools import partial
+
+from PyQt5 import uic
+from PyQt5.QtWidgets import (QApplication, QMainWindow)
+
+from lib7i95 import buildcombos
+from lib7i95 import buildmenus
+from lib7i95 import sscards
+from lib7i95 import checkconfig
+from lib7i95 import buildini
+
+class VersionError(QMainWindow):
+	def __init__(self):
+		super(VersionError, self).__init__()
+		print('wrong python version')
+		msgBox = QMessageBox()
+		msgBox.setIcon(QMessageBox.Warning)
+		msgBox.setWindowTitle('Version Error')
+		msgBox.setText('Python 3.6 or newer is required.\nYour Python is {}'.format(sys.version[0:3]))
+		msgBox.setStandardButtons(QMessageBox.Ok)
+		msgBox.exec()
+		sys.exit()
+
+class MainWindow(QMainWindow):
+	def __init__(self):
+		super(MainWindow, self).__init__()
+		if os.path.split(sys.argv[0])[0] == '/usr/bin':
+			self.lib_path = '/usr/lib/lib7i95'
+			print('Installed')
+		if os.path.split(sys.argv[0])[0] == '.':
+			self.lib_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
+			print('In Development')
+		uic.loadUi(os.path.join(self.lib_path, '7i95.ui'), self)
+		self.version = '0.1.0'
+		self.setWindowTitle(f'7i95 Configuration Tool Version {self.version}')
+		buildcombos.build(self)
+		buildmenus.build(self)
+		self.checks()
+		self.setupConnections()
+		self.show()
+
+	def checks(self):
+		try:
+			subprocess.check_output('mesaflash', encoding='UTF-8')
+		except FileNotFoundError:
+			t = ('Mesaflash not found go to\n'
+				'https://github.com/LinuxCNC/mesaflash\n'
+				'for installation instructions.')
+			self.outputPTE.appendPlainText(t)
+			self.readPB.setEnabled(False)
+			self.flashPB.setEnabled(False)
+			self.reloadPB.setEnabled(False)
+
+	def setupConnections(self):
+		self.configName.textChanged[str].connect(self.configNameChanged)
+		self.ssCardCB.currentIndexChanged.connect(partial(sscards.build, self))
+		self.actionCheck.triggered.connect(partial(checkconfig.checkit, self))
+		self.actionBuild.triggered.connect(self.buildfiles)
+		for i in range(6):
+			getattr(self, f'axisCB_{i}').currentIndexChanged.connect(self.axisChanged)
+
+	def configNameChanged(self, text):
+		if text:
+			self.configNameUnderscored = text.replace(' ','_').lower()
+			self.configPath = os.path.expanduser('~/linuxcnc/configs') + '/' + self.configNameUnderscored
+			self.pathLabel.setText(self.configPath)
+		else:
+			self.pathLabel.setText('')
+
+	def axisChanged(self):
+		joint = self.sender().objectName()[-1]
+		axis = self.sender().currentText()
+		if axis in ['X', 'Y', 'Z', 'U', 'V', 'W']:
+			getattr(self, f'axisType_{joint}').setText('LINEAR')
+		elif axis in ['A', 'B', 'C']:
+			getattr(self, f'axisType_{joint}').setText('ANGULAR')
+		else:
+			getattr(self, f'axisType_{joint}').setText('')
+		coordList = []
+		for i in range(6):
+			axisLetter = getattr(self, f'axisCB_{i}').currentText()
+			if axisLetter != 'Select':
+				coordList.append(axisLetter)
+			self.coordinatesLB.setText(''.join(coordList))
+
+	def buildfiles(self):
+		if not checkconfig.checkit(self):
+			self.outputPTE.appendPlainText('Build Failed')
+			return
+		buildini.build(self)
+
+def main():
+	app = QApplication(sys.argv)
+	if float(sys.version[0:3]) < 3.6:
+		ex = VersionError()
+	else:
+		ex = MainWindow()
+	sys.exit(app.exec_())
+
+if __name__ == "__main__":
+	main()
