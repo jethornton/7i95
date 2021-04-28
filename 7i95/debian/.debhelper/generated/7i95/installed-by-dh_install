@@ -1,0 +1,24 @@
+./src/7i95
+./src/7i95.ui
+./src/lib7i95/about.py
+./src/lib7i95/about.ui
+./src/lib7i95/buildcombos.py
+./src/lib7i95/buildfiles.py
+./src/lib7i95/buildhal.py
+./src/lib7i95/buildini.py
+./src/lib7i95/buildio.py
+./src/lib7i95/buildmenus.py
+./src/lib7i95/buildss.py
+./src/lib7i95/card.py
+./src/lib7i95/checkconfig.py
+./src/lib7i95/dialog.py
+./src/lib7i95/dialog.ui
+./src/lib7i95/help.py
+./src/lib7i95/help.ui
+./src/lib7i95/helptext.py
+./src/lib7i95/loadini.py
+./src/lib7i95/sscards.py
+./src/lib7i95/utilities.py
+./src/firmware/7i95_d.bit
+./src/firmware/7i95_fallback.bit
+./7i95 Configurator.desktop

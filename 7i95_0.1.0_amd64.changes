@@ -1,0 +1,31 @@
+Format: 1.8
+Date: Thu, 11 Mar 2021 06:55:42 -0600
+Source: 7i95
+Binary: 7i95
+Architecture: source all
+Version: 0.1.0
+Distribution: unstable
+Urgency: medium
+Maintainer: John Thornton, <jt@gnipsel.com>
+Changed-By: John Thornton <jt@gnipsel.com>
+Description:
+ 7i95       - 7i95 Configuration Tool
+Changes:
+ 7i95 (0.1.0) unstable; urgency=medium
+ .
+   * Inital Commit
+Checksums-Sha1:
+ 683a4b402e3dce99589a714dad4b8bdacda281ba 483 7i95_0.1.0.dsc
+ d682fb160276a41b162ef4ee324c49b43e5ecc71 213625 7i95_0.1.0.tar.gz
+ da6efe6302493f1994fd685188114d06b54dff34 173660 7i95_0.1.0_all.deb
+ 23f041ed2c3ddb641ff25b58b8a7ca00b8611650 4577 7i95_0.1.0_amd64.buildinfo
+Checksums-Sha256:
+ f379d5b598241d1770365ac0378414b382e130296b998b7d1afb4743872202c2 483 7i95_0.1.0.dsc
+ 20f07e50f73ab3b23edaec5103e647326d27b50033eb7047ae1608afcac7a0f4 213625 7i95_0.1.0.tar.gz
+ b9f4541b2217abdb4a44bc75614345f560288b0d6bc8d1ab143b23d7cf8ffd18 173660 7i95_0.1.0_all.deb
+ 14caa6cf7f028612bde67be45d5c86c643c9edde065ec6a2e248e5abc7ad65d5 4577 7i95_0.1.0_amd64.buildinfo
+Files:
+ 9c076cc946ac65b0ed94837642272c4f 483 python optional 7i95_0.1.0.dsc
+ fad301fe9077264980ad27bae624a41b 213625 python optional 7i95_0.1.0.tar.gz
+ 744bb104320a435caf8214e2638c0db8 173660 python optional 7i95_0.1.0_all.deb
+ b2da411857892cd974e12952ba624e65 4577 python optional 7i95_0.1.0_amd64.buildinfo

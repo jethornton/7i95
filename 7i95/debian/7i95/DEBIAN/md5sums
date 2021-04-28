@@ -1,0 +1,27 @@
+2dcad1cc10c4a46324a7f36ad173513c  usr/bin/7i95
+a987959b7843bc0536429aece51ca2b2  usr/lib/lib7i95/7i95.ui
+344778ae5a1a617ca4c5c87dd5a4b1d0  usr/lib/lib7i95/7i95_d.bit
+2ee70c9b15811b3a11c6adec24a89f5e  usr/lib/lib7i95/7i95_fallback.bit
+da9e3f3038675ec29fc05cb69057152f  usr/lib/python3/dist-packages/lib7i95/about.py
+b7bb4a58be4f4c9416b12643121b7916  usr/lib/python3/dist-packages/lib7i95/about.ui
+aa61323143d1a6a27285fcff44ce8d85  usr/lib/python3/dist-packages/lib7i95/buildcombos.py
+bf35eaedfc2870897c5634b65c22d92a  usr/lib/python3/dist-packages/lib7i95/buildfiles.py
+a4a175eb52017a598b745b61d040c894  usr/lib/python3/dist-packages/lib7i95/buildhal.py
+6abd44ce142daa474e05b9449806052a  usr/lib/python3/dist-packages/lib7i95/buildini.py
+51e8bd455e9b7774e508b6e7266f783c  usr/lib/python3/dist-packages/lib7i95/buildio.py
+4a90a56fe1e823353a1e613fdf12d330  usr/lib/python3/dist-packages/lib7i95/buildmenus.py
+7e1480870d8869cc9a0ad333349af22f  usr/lib/python3/dist-packages/lib7i95/buildss.py
+0ccdbda5c8f523b036dae57433b9cc3d  usr/lib/python3/dist-packages/lib7i95/card.py
+6e05d35bbd4d36c31708540ad905df47  usr/lib/python3/dist-packages/lib7i95/checkconfig.py
+cac2e6777fa1d17beff895ca6a37477b  usr/lib/python3/dist-packages/lib7i95/dialog.py
+c709737806862053835a0365db56b69e  usr/lib/python3/dist-packages/lib7i95/dialog.ui
+0f387f018b741e67ef87d991d1070d9f  usr/lib/python3/dist-packages/lib7i95/help.py
+c06a8f7fb4a1f9f9105f898cf9a3fa33  usr/lib/python3/dist-packages/lib7i95/help.ui
+d895958003bf497b2686440d06ec0585  usr/lib/python3/dist-packages/lib7i95/helptext.py
+0922492ff224162db5fc04d8764e905f  usr/lib/python3/dist-packages/lib7i95/loadini.py
+654ff76a70c2d96c69626b9200c456f4  usr/lib/python3/dist-packages/lib7i95/sscards.py
+ab88ca1c2784818df4f1b88704324c67  usr/lib/python3/dist-packages/lib7i95/utilities.py
+e47d6fe1edf8a0d442d0a3b5b50a4d4f  usr/share/applications/7i95 Configurator.desktop
+a649bcec54f3065c006055927f26635f  usr/share/doc/7i95/changelog.gz
+378ab533894d2434b22e7eca3b382f2c  usr/share/doc/7i95/copyright
+4e80571dd054d288e3d219661a8886ed  usr/share/man/man1/7i95.1.gz

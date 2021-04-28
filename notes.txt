@@ -1,0 +1,35 @@
+
+create a changelog file
+
+dch --create
+
+change to released Note: you must either change something or use Ctrl o to save.
+
+dch --release
+
+Ctrl o to write out then Ctrl x
+
+Append a new entry to the current changelog
+dch --append
+
+To change the version
+dch -v 1.3.1
+
+to build a deb from the top most directory
+dpkg-buildpackage -us -uc
+
+
+# estop
+loadrt estop_latch
+addf estop-latch.0 servo-thread
+net estop-loopout iocontrol.0.emc-enable-in <= estop-latch.0.ok-out
+net estop-loopin iocontrol.0.user-enable-out => estop-latch.0.ok-in
+net estop-reset iocontrol.0.user-request-enable => estop-latch.0.reset
+net remote-estop estop-latch.0.fault-in <=  parport.0.pin-in10-not
+
+Mesaflash shows all the hardware (its showing 6 encoders here)
+Muxed encoders share a set of pins for 2 encoders
+
+So
+Muxed encoder 0 on the 7I76 = hal encoders 0 and 1 (1 is a dummy)
+Muxed encoders 1 and 2 on the 7I85 = hal encoders 2,3,4,5 

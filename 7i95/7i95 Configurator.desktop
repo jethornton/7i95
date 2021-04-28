@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=0.1
+Type=Application
+Name=Something
+Comment=7i95 Configuration Tool
+Exec=7i95
+Icon=/usr/share/pixmaps/linuxcncicon.png
+Categories=X-CNC;Development
+Terminal=false
+StartupNotify=true
+StartupWMClass=7i95
+Name[en_US]=7i95 Configurator
