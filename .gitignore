@@ -1,1 +1,9 @@
 docs/build
+7i95/debian/7i95
+7i95/debian/*.substvars
+7i95/debian/debhelper-build-stamp
+7i95/debian/files
+*.dsc
+*.gz
+*.buildinfo
+*.changes
