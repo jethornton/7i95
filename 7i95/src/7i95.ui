@@ -12855,7 +12855,7 @@ The Smart Serial Card configuration will not load from the ini file at this time
          <rect>
           <x>30</x>
           <y>490</y>
-          <width>261</width>
+          <width>331</width>
           <height>16</height>
          </rect>
         </property>

@@ -14,6 +14,8 @@ from lib7i95 import loadini
 from lib7i95 import buildini
 from lib7i95 import buildhal
 from lib7i95 import buildio
+from lib7i95 import buildmisc
+from lib7i95 import buildss
 from lib7i95 import utilities
 
 class VersionError(QMainWindow):
@@ -42,6 +44,7 @@ class MainWindow(QMainWindow):
 		self.emcVersion = '1.1'
 		self.setWindowTitle(f'7i95 Configuration Tool Version {self.version}')
 		self.card = {'7i95': {'joints': 6, 'inputs': 24, 'outputs': 6}}
+		self.ladderOptionsList = utilities.plcOptions()
 		self.axes = 0
 
 		buildcombos.build(self)
@@ -49,6 +52,8 @@ class MainWindow(QMainWindow):
 		utilities.checks(self)
 		self.setupConnections()
 		#self.testing()
+		# for testing
+		loadini.openini(self, '/home/john/linuxcnc/configs/7i95/7i95.ini')
 		self.show()
 
 	def testing(self):
@@ -75,11 +80,17 @@ class MainWindow(QMainWindow):
 		self.actionOpen.triggered.connect(partial(loadini.openini, self))
 		self.actionCheck.triggered.connect(partial(checkconfig.checkit, self))
 		self.actionBuild.triggered.connect(self.buildfiles)
-		for i in range(6):
+		for i in range(self.card['7i95']['joints']):
 			getattr(self, f'axisCB_{i}').currentIndexChanged.connect(partial(utilities.axisChanged, self))
-		for i in range(6):
+		for i in range(self.card['7i95']['joints']):
+			getattr(self, f'scale_{i}').textChanged.connect(partial(utilities.updateAxisInfo, self))
+		for i in range(self.card['7i95']['joints']):
+			getattr(self, f'maxVelocity_{i}').textChanged.connect(partial(utilities.updateAxisInfo, self))
+		for i in range(self.card['7i95']['joints']):
+			getattr(self, f'maxAccel_{i}').textChanged.connect(partial(utilities.updateAxisInfo, self))
+		for i in range(self.card['7i95']['joints']):
 			getattr(self, f'pidDefault_{i}').clicked.connect(partial(utilities.pidSetDefault, self))
-		for i in range(6):
+		for i in range(self.card['7i95']['joints']):
 			getattr(self, 'driveCB_' + str(i)).currentIndexChanged.connect(partial(utilities.driveChanged, self))
 
 	def buildfiles(self):
@@ -89,6 +100,9 @@ class MainWindow(QMainWindow):
 		buildini.build(self)
 		buildhal.build(self)
 		buildio.build(self)
+		buildmisc.build(self)
+		if self.ssCardCB.currentData():
+			buildss.build(self)
 
 	def errorMsg(self, text, title=None):
 		msgBox = QMessageBox()

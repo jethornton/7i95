@@ -2,37 +2,41 @@ import os, configparser
 from PyQt5.QtWidgets import (QFileDialog, QLabel, QLineEdit, QSpinBox,
 	QDoubleSpinBox, QCheckBox, QGroupBox, QComboBox, QPushButton)
 
+from lib7i95 import loadss
 
 config = configparser.ConfigParser(strict=False)
 config.optionxform = str
 
-def openini(parent):
+def openini(parent, fileName = None):
 	parent.tabWidget.setCurrentIndex(0)
 	parent.outputPTE.clear()
-	if os.path.isdir(os.path.expanduser('~/linuxcnc/configs')):
-		configsDir = os.path.expanduser('~/linuxcnc/configs')
-	else:
-		configsDir = os.path.expanduser('~/')
-	fileName = QFileDialog.getOpenFileName(parent,
-	caption="Select Configuration INI File", directory=configsDir,
-	filter='*.ini', options=QFileDialog.DontUseNativeDialog,)
-	if fileName:
-		parent.outputPTE.appendPlainText(f'Loading {fileName[0]}')
-		iniFile = (fileName[0])
+	if fileName is None:
+		if os.path.isdir(os.path.expanduser('~/linuxcnc/configs')):
+			configsDir = os.path.expanduser('~/linuxcnc/configs')
+		else:
+			configsDir = os.path.expanduser('~/')
+		fileName = QFileDialog.getOpenFileName(parent,
+		caption="Select Configuration INI File", directory=configsDir,
+		filter='*.ini', options=QFileDialog.DontUseNativeDialog,)
+		if fileName:
+			parent.outputPTE.appendPlainText(f'Loading {fileName[0]}')
+			iniFile = (fileName[0])
+	else: # we passed a file name and path for testing
+		iniFile = (fileName)
 
-		if config.read(iniFile):
-			if config.has_option('7I95', 'VERSION'):
-				iniVersion = config['7I95']['VERSION']
-				if iniVersion == parent.version:
-					loadini(parent)
-				else:
-					msg = f'The ini file version is {iniVersion}\n The Configuration Tool version is {parent.version}\nTry and open the ini?'
-					if parent.errorMsg(msg, 'Version Difference'):
-						loadini(parent)
+	if config.read(iniFile):
+		if config.has_option('7I95', 'VERSION'):
+			iniVersion = config['7I95']['VERSION']
+			if iniVersion == parent.version:
+				loadini(parent)
 			else:
-				msg = 'This ini file may have been built with an older version\nTry and open?'
-				if parent.errorMsg(msg, 'No Version'):
+				msg = f'The ini file version is {iniVersion}\n The Configuration Tool version is {parent.version}\nTry and open the ini?'
+				if parent.errorMsg(msg, 'Version Difference'):
 					loadini(parent)
+		else:
+			msg = 'This ini file may have been built with an older version\nTry and open?'
+			if parent.errorMsg(msg, 'No Version'):
+				loadini(parent)
 
 def loadini(parent):
 	# Section, Item, Object Name
@@ -103,24 +107,26 @@ def loadini(parent):
 	iniList.append(['SPINDLE', 'BIAS', 'bias_s'])
 	iniList.append(['SPINDLE', 'MAX_ERROR', 'maxError_s'])
 
-	for i in range(31):
-		iniList.append(['INPUTS', 'INPUT_{}'.format(i), 'input_{}'.format(i)])
+	for i in range(parent.card['7i95']['inputs']):
+		iniList.append(['INPUT_PB', f'INPUT_PB_{i}', f'inputPB_{i}'])
+		iniList.append(['INPUT_PB', f'INPUT_INVERT_{i}', f'inputInvertCb_{i}'])
 
-	for i in range(31):
-		iniList.append(['INPUTS', 'INPUT_JOINT_{}'.format(i), 'inputJoint_{}'.format(i)])
+	for i in range(parent.card['7i95']['inputs']):
+		iniList.append(['OUTPUT_PB', f'OUTPUT_PB_{i}', f'outputPB_{i}'])
 
-	for i in range(31):
-		iniList.append(['INPUTS', 'INPUT_INVERT_{}'.format(i), 'inputInvert_{}'.format(i)])
-
-	for i in range(15):
-		iniList.append(['OUTPUTS', 'OUTPUT_{}'.format(i), 'output_{}'.format(i)])
-
+	iniList.append(['OPTIONS', 'INTRO_GRAPHIC', 'splashScreenCB'])
+	iniList.append(['OPTIONS', 'INTRO_GRAPHIC_TIME', 'splashScreenSB'])
 	iniList.append(['OPTIONS', 'MANUAL_TOOL_CHANGE', 'manualToolChangeCB'])
+	iniList.append(['OPTIONS', 'CUSTOM_HAL', 'customhalCB'])
+	iniList.append(['OPTIONS', 'POST_GUI_HAL', 'postguiCB'])
+	iniList.append(['OPTIONS', 'SHUTDOWN_HAL', 'shutdownCB'])
 	iniList.append(['OPTIONS', 'HALUI', 'haluiCB'])
 	iniList.append(['OPTIONS', 'PYVCP', 'pyvcpCB'])
 	iniList.append(['OPTIONS', 'GLADEVCP', 'gladevcpCB'])
 	iniList.append(['OPTIONS', 'LADDER', 'ladderGB'])
 	iniList.append(['OPTIONS', 'LADDER_RUNGS', 'ladderRungsSB'])
+	iniList.append(['OPTIONS', 'BACKUP', 'backupCB'])
+	iniList.append(['SSERIAL', 'SS_CARD', 'ssCardCB'])
 
 #iniList.append(['', '', ''])
 	# iniList section, item, value
@@ -146,3 +152,13 @@ def loadini(parent):
 				getattr(parent, item[2]).setText(config[item[0]][item[1]])
 			else:
 				print(item[2])
+
+	parent.outputPTE.appendPlainText('INI file Loaded')
+
+	if config.has_section('SSERIAL'):
+		card = config.get('SSERIAL', 'ssCardCB')
+		index = parent.ssCardCB.findText(card)
+		if index > 0:
+			parent.ssCardCB.setCurrentIndex(index)
+		loadss.load(parent, config)
+	parent.outputPTE.appendPlainText('Smart Serial file Loaded')

@@ -1,6 +1,14 @@
 import os, subprocess
 from PyQt5.QtWidgets import QMessageBox
 
+def isNumber(s):
+	try:
+		s[-1].isdigit()
+		float(s)
+		return True
+	except ValueError:
+		return False
+
 def checks(parent):
 	try:
 		subprocess.check_output('mesaflash', encoding='UTF-8')
@@ -76,3 +84,42 @@ def driveChanged(parent):
 		getattr(parent, 'stepSpace_' + joint).setEnabled(True)
 		getattr(parent, 'dirSetup_' + joint).setEnabled(True)
 		getattr(parent, 'dirHold_' + joint).setEnabled(True)
+
+def plcOptions():
+	return ['ladderRungsSB', 'ladderBitsSB', 'ladderWordsSB',
+	'ladderTimersSB', 'iecTimerSB', 'ladderMonostablesSB', 'ladderCountersSB',
+	'ladderInputsSB', 'ladderOutputsSB', 'ladderExpresionsSB',
+	'ladderSectionsSB', 'ladderSymbolsSB', 'ladderS32InputsSB',
+	'ladderS32OuputsSB', 'ladderFloatInputsSB', 'ladderFloatOutputsSB']
+
+def updateAxisInfo(parent):
+	if parent.sender().objectName() == 'actionOpen':
+		return
+	joint = parent.sender().objectName()[-1]
+	scale = getattr(parent, 'scale_' + joint).text()
+	if scale and isNumber(scale):
+		scale = float(scale)
+	else:
+		return
+
+	maxVelocity = getattr(parent, 'maxVelocity_' + joint).text()
+	if maxVelocity and isNumber(maxVelocity):
+		maxVelocity = float(maxVelocity)
+	else:
+		return
+
+	maxAccel = getattr(parent, 'maxAccel_' + joint).text()
+	if maxAccel and isNumber(maxAccel):
+		maxAccel = float(maxAccel)
+	else:
+		return
+
+	if not parent.linearUnitsCB.currentData():
+		parent.errorDialog('Machine Tab:\nLinear Units must be selected')
+		return
+	accelTime = maxVelocity / maxAccel
+	getattr(parent, 'timeJoint_' + joint).setText(f'{accelTime:.2f} seconds')
+	accelDistance = accelTime * 0.5 * maxVelocity
+	getattr(parent, 'distanceJoint_' + joint).setText(f'{accelDistance:.2f} {parent.linearUnitsCB.currentData()}')
+	stepRate = scale * maxVelocity
+	getattr(parent, 'stepRateJoint_' + joint).setText(f'{abs(stepRate):.0f} pulses')
