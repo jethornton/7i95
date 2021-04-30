@@ -9,7 +9,7 @@ Installing
 
 .. Note:: Requires Python 3.6 or newer to work.
 
-I now have a Debian deb for installing 7i96!!!
+I now have a Debian deb for installing 7i95!!!
 
 Download the `deb <https://github.com/jethornton/7i96/raw/master/7i95_0.1.0_all.deb>`_
 
