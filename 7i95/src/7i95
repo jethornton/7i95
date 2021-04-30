@@ -76,6 +76,7 @@ class MainWindow(QMainWindow):
 
 	def setupConnections(self):
 		self.configName.textChanged[str].connect(partial(utilities.configNameChanged, self))
+		self.spindleTypeCB.currentIndexChanged.connect(partial(utilities.spindleTypeChanged, self))
 		self.ssCardCB.currentIndexChanged.connect(partial(sscards.build, self))
 		self.actionOpen.triggered.connect(partial(loadini.openini, self))
 		self.actionCheck.triggered.connect(partial(checkconfig.checkit, self))
@@ -90,6 +91,7 @@ class MainWindow(QMainWindow):
 			getattr(self, f'maxAccel_{i}').textChanged.connect(partial(utilities.updateAxisInfo, self))
 		for i in range(self.card['7i95']['joints']):
 			getattr(self, f'pidDefault_{i}').clicked.connect(partial(utilities.pidSetDefault, self))
+		self.pidDefault_s.clicked.connect(partial(utilities.pidSetDefault, self))
 		for i in range(self.card['7i95']['joints']):
 			getattr(self, 'driveCB_' + str(i)).currentIndexChanged.connect(partial(utilities.driveChanged, self))
 

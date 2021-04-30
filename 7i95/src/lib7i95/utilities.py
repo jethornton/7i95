@@ -123,3 +123,56 @@ def updateAxisInfo(parent):
 	getattr(parent, 'distanceJoint_' + joint).setText(f'{accelDistance:.2f} {parent.linearUnitsCB.currentData()}')
 	stepRate = scale * maxVelocity
 	getattr(parent, 'stepRateJoint_' + joint).setText(f'{abs(stepRate):.0f} pulses')
+
+def spindleTypeChanged(parent): 
+	#print(parent.spindleTypeCB.itemData(parent.spindleTypeCB.currentIndex()))
+	if parent.spindleTypeCB.currentData():
+		parent.spindleGB.setEnabled(True)
+		parent.spindleInfoGB.setEnabled(True)
+		parent.encoderGB.setEnabled(True)
+		parent.spindlepidGB.setEnabled(True)
+		if parent.spindleTypeCB.itemData(parent.spindleTypeCB.currentIndex()) == '1':
+			parent.spindleInfo1Lbl.setText("PWM on Step 4")
+			parent.tb2p3LB.setText("PWM +")
+			parent.tb2p2LB.setText("PWM -")
+			parent.spindleInfo2Lbl.setText("Direction on Dir 4")
+			parent.tb2p5LB.setText("Direction +")
+			parent.tb2p4LB.setText("Direction -")
+			parent.spindleInfo3Lbl.setText("Select Enable on the Outputs tab")
+		if parent.spindleTypeCB.itemData(parent.spindleTypeCB.currentIndex()) == '2':
+			parent.spindleInfo1Lbl.setText("UP on Step 4")
+			parent.tb2p3LB.setText("UP +")
+			parent.tb2p2LB.setText("UP -")
+			parent.spindleInfo2Lbl.setText("Down on Dir 4")
+			parent.tb2p5LB.setText("DOWN +")
+			parent.tb2p4LB.setText("DOWN -")
+			parent.spindleInfo3Lbl.setText("Select Enable on the Outputs tab")
+		if parent.spindleTypeCB.itemData(parent.spindleTypeCB.currentIndex()) == '3':
+			parent.spindleInfo1Lbl.setText("PDM on Step 4")
+			parent.tb2p3LB.setText("PDM +")
+			parent.tb2p2LB.setText("PDM -")
+			parent.spindleInfo2Lbl.setText("Direction on Dir 4")
+			parent.tb2p5LB.setText("Direction +")
+			parent.tb2p4LB.setText("Direction -")
+			parent.spindleInfo3Lbl.setText("Select Enable on the Outputs tab")
+		if parent.spindleTypeCB.itemData(parent.spindleTypeCB.currentIndex()) == '4':
+			parent.spindleInfo1Lbl.setText("Direction on Step 4")
+			parent.tb2p3LB.setText("Direction +")
+			parent.tb2p2LB.setText("Direction -")
+			parent.spindleInfo2Lbl.setText("PWM on Dir 4")
+			parent.tb2p5LB.setText("PWM +")
+			parent.tb2p4LB.setText("PWM -")
+			parent.spindleInfo3Lbl.setText("Select Enable on the Outputs tab")
+
+	else:
+		parent.spindleGB.setEnabled(False)
+		parent.spindleInfoGB.setEnabled(False)
+		parent.encoderGB.setEnabled(False)
+		parent.spindlepidGB.setEnabled(False)
+		parent.spindleInfo1Lbl.setText("No Spindle")
+		parent.spindleInfo2Lbl.setText("")
+		parent.spindleInfo3Lbl.setText("")
+		parent.spindleInfo4Lbl.setText("")
+
+
+

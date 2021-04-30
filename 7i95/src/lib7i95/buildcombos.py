@@ -121,3 +121,16 @@ def build(parent):
 
 	for item in debug:
 		parent.debugCB.addItem(item[0], item[1])
+
+		spindle = [
+		['None', False],
+		['PWM Direction', '1'],
+		['Up Down', '2'],
+		['PDM Direction', '3'],
+		['Direction PWM', '4'],
+		['Step Direction', False],
+		]
+
+	for item in spindle:
+		parent.spindleTypeCB.addItem(item[0], item[1])
+
