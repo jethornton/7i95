@@ -7,10 +7,10 @@ from lib7i95 import loadss
 config = configparser.ConfigParser(strict=False)
 config.optionxform = str
 
-def openini(parent, fileName = None):
+def openini(parent, fileName = ''):
 	parent.tabWidget.setCurrentIndex(0)
 	parent.outputPTE.clear()
-	if fileName is None:
+	if not fileName:
 		if os.path.isdir(os.path.expanduser('~/linuxcnc/configs')):
 			configsDir = os.path.expanduser('~/linuxcnc/configs')
 		else:
@@ -107,11 +107,11 @@ def loadini(parent):
 	iniList.append(['SPINDLE', 'BIAS', 'bias_s'])
 	iniList.append(['SPINDLE', 'MAX_ERROR', 'maxError_s'])
 
-	for i in range(parent.card['7i95']['inputs']):
+	for i in range(parent.card['inputs']):
 		iniList.append(['INPUT_PB', f'INPUT_PB_{i}', f'inputPB_{i}'])
 		iniList.append(['INPUT_PB', f'INPUT_INVERT_{i}', f'inputInvertCb_{i}'])
 
-	for i in range(parent.card['7i95']['inputs']):
+	for i in range(parent.card['inputs']):
 		iniList.append(['OUTPUT_PB', f'OUTPUT_PB_{i}', f'outputPB_{i}'])
 
 	iniList.append(['OPTIONS', 'INTRO_GRAPHIC', 'splashScreenCB'])

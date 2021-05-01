@@ -17,6 +17,7 @@ from lib7i95 import buildio
 from lib7i95 import buildmisc
 from lib7i95 import buildss
 from lib7i95 import utilities
+from lib7i95 import pcinfo
 
 class VersionError(QMainWindow):
 	def __init__(self):
@@ -25,7 +26,7 @@ class VersionError(QMainWindow):
 		msgBox = QMessageBox()
 		msgBox.setIcon(QMessageBox.Warning)
 		msgBox.setWindowTitle('Version Error')
-		msgBox.setText('Python 3.6 or newer is required.\nYour Python is {}'.format(sys.version[0:3]))
+		msgBox.setText(f'Python 3.6 or newer is required.\nYour Python is {sys.version[0:3]}')
 		msgBox.setStandardButtons(QMessageBox.Ok)
 		msgBox.exec()
 		sys.exit()
@@ -43,7 +44,7 @@ class MainWindow(QMainWindow):
 		self.version = '0.1.0'
 		self.emcVersion = '1.1'
 		self.setWindowTitle(f'7i95 Configuration Tool Version {self.version}')
-		self.card = {'7i95': {'joints': 6, 'inputs': 24, 'outputs': 6}}
+		self.card = {'type':'7i95', 'joints': 6, 'inputs': 24, 'outputs': 6}
 		self.ladderOptionsList = utilities.plcOptions()
 		self.axes = 0
 
@@ -81,19 +82,23 @@ class MainWindow(QMainWindow):
 		self.actionOpen.triggered.connect(partial(loadini.openini, self))
 		self.actionCheck.triggered.connect(partial(checkconfig.checkit, self))
 		self.actionBuild.triggered.connect(self.buildfiles)
-		for i in range(self.card['7i95']['joints']):
+		for i in range(self.card['joints']):
 			getattr(self, f'axisCB_{i}').currentIndexChanged.connect(partial(utilities.axisChanged, self))
-		for i in range(self.card['7i95']['joints']):
+		for i in range(self.card['joints']):
 			getattr(self, f'scale_{i}').textChanged.connect(partial(utilities.updateAxisInfo, self))
-		for i in range(self.card['7i95']['joints']):
+		for i in range(self.card['joints']):
 			getattr(self, f'maxVelocity_{i}').textChanged.connect(partial(utilities.updateAxisInfo, self))
-		for i in range(self.card['7i95']['joints']):
+		for i in range(self.card['joints']):
 			getattr(self, f'maxAccel_{i}').textChanged.connect(partial(utilities.updateAxisInfo, self))
-		for i in range(self.card['7i95']['joints']):
+		for i in range(self.card['joints']):
 			getattr(self, f'pidDefault_{i}').clicked.connect(partial(utilities.pidSetDefault, self))
 		self.pidDefault_s.clicked.connect(partial(utilities.pidSetDefault, self))
-		for i in range(self.card['7i95']['joints']):
+		for i in range(self.card['joints']):
 			getattr(self, 'driveCB_' + str(i)).currentIndexChanged.connect(partial(utilities.driveChanged, self))
+		self.cpuPB.clicked.connect(partial(pcinfo.cpuInfo, self))
+		self.nicPB.clicked.connect(partial(pcinfo.nicInfo, self))
+		self.calcNicPB.clicked.connect(partial(pcinfo.nicCalc, self))
+		self.readTmaxPB.clicked.connect(partial(pcinfo.readTmax, self))
 
 	def buildfiles(self):
 		if not checkconfig.checkit(self):
@@ -118,6 +123,17 @@ class MainWindow(QMainWindow):
 		else:
 			return False
 
+	def errorMsgOk(self, text, title=None):
+		msgBox = QMessageBox()
+		msgBox.setIcon(QMessageBox.Warning)
+		msgBox.setWindowTitle(title)
+		msgBox.setText(text)
+		msgBox.setStandardButtons(QMessageBox.Ok)
+		returnValue = msgBox.exec()
+		if returnValue == QMessageBox.Ok:
+			return True
+		else:
+			return False
 
 def main():
 	app = QApplication(sys.argv)

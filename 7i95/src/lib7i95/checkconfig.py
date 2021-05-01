@@ -52,75 +52,75 @@ def checkit(parent):
 		tabError = True
 		configErrors.append('\tAt least one Joint must be configured starting with Joint 0')
 	else: #check the joints
-		# make this a loop getattr(parent, '_' + str(index))
-		for index in range(5):
-			if getattr(parent, 'axisCB_' + str(index)).currentText() != 'Select':
-				if not getattr(parent, 'scale_' + str(index)).text():
+		# make this a loop getattr(parent, f'_{i}')
+		for i in range(parent.card['joints']):
+			if getattr(parent, f'axisCB_{i}').currentText() != 'Select':
+				if not getattr(parent, f'scale_{i}').text():
 					tabError = True
-					configErrors.append('\tThe Scale must be specified for Joint {}'.format(index))
-				if not getattr(parent, 'minLimit_' + str(index)).text():
+					configErrors.append(f'\tThe Scale must be specified for Joint {i}')
+				if not getattr(parent, f'minLimit_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for Mininum Limit Joint {} must be specified'.format(index))
-				if not getattr(parent, 'maxLimit_' + str(index)).text():
+					configErrors.append(f'\tThe Mininum Limit for Joint {i} must be specified')
+				if not getattr(parent, f'maxLimit_{i}').text():
 					tabError = True
-					configErrors.append('\tThe Maximum Limit for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'maxVelocity_' + str(index)).text():
+					configErrors.append(f'\tThe Maximum Limit for Joint {i} must be specified')
+				if not getattr(parent, f'maxVelocity_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for Maximum Velocity for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'maxAccel_' + str(index)).text():
+					configErrors.append(f'\tThe Maximum Velocity for Joint {i} must be specified')
+				if not getattr(parent, f'maxAccel_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for Maximum Acceleration for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'p_' + str(index)).text():
+					configErrors.append(f'\tThe Maximum Acceleration for Joint {i} must be specified')
+				if not getattr(parent, f'p_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for P for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'i_' + str(index)).text():
+					configErrors.append(f'\tThe P for Joint {i} must be specified')
+				if not getattr(parent, f'i_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for I for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'd_' + str(index)).text():
+					configErrors.append(f'\tThe I for Joint {i} must be specified')
+				if not getattr(parent, f'd_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for D for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'ff0_' + str(index)).text():
+					configErrors.append(f'\tThe D for Joint {i} must be specified')
+				if not getattr(parent, f'ff0_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for FF0 for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'ff1_' + str(index)).text():
+					configErrors.append(f'\tThe FF0 for Joint {i} must be specified')
+				if not getattr(parent, f'ff1_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for FF1 for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'ff2_' + str(index)).text():
+					configErrors.append(f'\tThe FF1 for Joint {i} must be specified')
+				if not getattr(parent, f'ff2_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for FF2 for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'stepTime_' + str(index)).text():
+					configErrors.append(f'\tThe FF2 for Joint {i} must be specified')
+				if not getattr(parent, f'stepTime_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for Step Time for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'stepSpace_' + str(index)).text():
+					configErrors.append(f'\tThe Step Time for Joint {i} must be specified')
+				if not getattr(parent, f'stepSpace_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for Step Space for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'dirSetup_' + str(index)).text():
+					configErrors.append(f'\tThe Step Space for Joint {i} must be specified')
+				if not getattr(parent, f'dirSetup_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for Direction Setup for Joint {} must be specified'.format(index))
-				if not getattr(parent, 'dirHold_' + str(index)).text():
+					configErrors.append(f'\tThe Direction Setup for Joint {i} must be specified')
+				if not getattr(parent, f'dirHold_{i}').text():
 					tabError = True
-					configErrors.append('\tThe for Direction Hold for Joint {} must be specified'.format(index))
+					configErrors.append(f'\tThe Direction Hold for Joint {i} must be specified')
 				# add sanity check for home entries
-				if getattr(parent, 'home_' + str(index)).text():
-					if not isNumber(getattr(parent, 'home_' + str(index)).text()):
+				if getattr(parent, f'home_{i}').text():
+					if not isNumber(getattr(parent, f'home_{i}').text()):
 						tabError = True
-						configErrors.append('\tThe for Home Location for Joint {} must be a number'.format(index))
-				if getattr(parent, 'homeOffset_' + str(index)).text():
-					if not isNumber(getattr(parent, 'homeOffset_' + str(index)).text()):
+						configErrors.append(f'\tThe Home Location for Joint {i} must be a number')
+				if getattr(parent, f'homeOffset_{i}').text():
+					if not isNumber(getattr(parent, f'homeOffset_{i}').text()):
 						tabError = True
-						configErrors.append('\tThe for Home Offset for Joint {} must be a number'.format(index))
-				if getattr(parent, 'homeSearchVel_' + str(index)).text():
-					if not isNumber(getattr(parent, 'homeSearchVel_' + str(index)).text()):
+						configErrors.append(f'\tThe Home Offset for Joint {i} must be a number')
+				if getattr(parent, f'homeSearchVel_{i}').text():
+					if not isNumber(getattr(parent, f'homeSearchVel_{i}').text()):
 						tabError = True
-						configErrors.append('\tThe for Home Search Velocity for Joint {} must be a number'.format(index))
-				if getattr(parent, 'homeLatchVel_' + str(index)).text():
-					if not isNumber(getattr(parent, 'homeLatchVel_' + str(index)).text()):
+						configErrors.append(f'\tThe Home Search Velocity for Joint {i} must be a number')
+				if getattr(parent, f'homeLatchVel_{i}').text():
+					if not isNumber(getattr(parent, f'homeLatchVel_{i}').text()):
 						tabError = True
-						configErrors.append('\tThe for Home Latch Velocity for Joint {} must be a number'.format(index))
-				if getattr(parent, 'homeSequence_' + str(index)).text():
-					if not isNumber(getattr(parent, 'homeSequence_' + str(index)).text()):
+						configErrors.append(f'\tThe Home Latch Velocity for Joint {i} must be a number')
+				if getattr(parent, f'homeSequence_{i}').text():
+					if not isNumber(getattr(parent, f'homeSequence_{i}').text()):
 						tabError = True
-						configErrors.append('\tThe for Home Sequence for Joint {} must be a number'.format(index))
+						configErrors.append(f'\tThe Home Sequence for Joint {i} must be a number')
 
 	if tabError:
 		configErrors.insert(nextHeader, 'Axis Tab:')

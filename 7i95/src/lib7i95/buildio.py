@@ -99,7 +99,7 @@ def build(parent):
 		}
 
 	# build inputs from qpushbutton menus
-	for i in range(parent.card['7i95']['inputs']):
+	for i in range(parent.card['inputs']):
 		key = getattr(parent, 'inputPB_' + str(i)).text()
 		invert = '_not' if getattr(parent, 'inputInvertCb_' + str(i)).isChecked() else ''
 		if input_dict.get(key, False): # return False if key is not in dictionary
@@ -135,7 +135,7 @@ def build(parent):
 	}
 
 	# build the outputs
-	for i in range(parent.card['7i95']['outputs']):
+	for i in range(parent.card['outputs']):
 		key = getattr(parent, 'outputPB_' + str(i)).text()
 		if output_dict.get(key, False): # return False if key is not in dictionary
 			contents.append(output_dict[key] + f'hm2_7i96.0.ssr.00.out-0{i}\n')

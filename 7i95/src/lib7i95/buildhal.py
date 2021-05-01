@@ -95,7 +95,7 @@ def build(parent):
 			if getattr(parent, option).value() > 0:
 				ladderOptions.append(getattr(parent, option).property('option') + '=' + str(getattr(parent, option).value()))
 		if ladderOptions:
-				halContents.append('loadrt classicladder_rt {}\n'.format(' '.join(ladderOptions)))
+				halContents.append(f'loadrt classicladder_rt {" ".join(ladderOptions)}\n')
 		else:
 			halContents.append('loadrt classicladder_rt\n')
 		halContents.append('addf classicladder.0.refresh servo-thread 1\n')

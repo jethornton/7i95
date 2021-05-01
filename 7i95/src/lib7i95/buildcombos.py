@@ -134,3 +134,11 @@ def build(parent):
 	for item in spindle:
 		parent.spindleTypeCB.addItem(item[0], item[1])
 
+	cpuSpeed = [
+		['GHz', 1000],
+		['MHz', 1]
+		]
+
+	for item in cpuSpeed:
+		parent.cpuSpeedCB.addItem(item[0], item[1])
+
