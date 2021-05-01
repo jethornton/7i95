@@ -11,12 +11,12 @@ Installing
 
 I now have a Debian deb for installing 7i95!!!
 
-Download the `deb <https://github.com/jethornton/7i95/raw/master/7i95_0.1.0_all.deb>`_
+Download the `deb <https://github.com/jethornton/7i95/raw/master/7i95_0.1.1_all.deb>`_
 
 Or use wget from a terminal
 ::
 
-	wget https://github.com/jethornton/7i95/raw/master/7i95_0.1.0_all.deb
+	wget https://github.com/jethornton/7i95/raw/master/7i95_0.1.1_all.deb
 
 If you get `bash: wget: command not found` you can install it from a terminal with
 ::

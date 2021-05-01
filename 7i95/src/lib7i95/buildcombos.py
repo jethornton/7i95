@@ -144,7 +144,7 @@ def build(parent):
 
 	firmware = [
 		['Select', False],
-		['5 StepGens ', '7i96d.bit']
+		['6 StepGens ', '7i95d.bit']
 		]
 
 	for item in firmware:
