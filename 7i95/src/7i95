@@ -17,7 +17,9 @@ from lib7i95 import buildio
 from lib7i95 import buildmisc
 from lib7i95 import buildss
 from lib7i95 import utilities
+from lib7i95 import card
 from lib7i95 import pcinfo
+from lib7i95 import extcmd
 
 class VersionError(QMainWindow):
 	def __init__(self):
@@ -52,6 +54,7 @@ class MainWindow(QMainWindow):
 		buildmenus.build(self)
 		utilities.checks(self)
 		self.setupConnections()
+		self.extcmd = extcmd.extcmd()
 		#self.testing()
 		# for testing
 		loadini.openini(self, '/home/john/linuxcnc/configs/7i95/7i95.ini')
@@ -99,6 +102,11 @@ class MainWindow(QMainWindow):
 		self.nicPB.clicked.connect(partial(pcinfo.nicInfo, self))
 		self.calcNicPB.clicked.connect(partial(pcinfo.nicCalc, self))
 		self.readTmaxPB.clicked.connect(partial(pcinfo.readTmax, self))
+		self.readPB.clicked.connect(partial(card.readCard, self, '7i95'))
+		self.flashPB.clicked.connect(partial(card.flashCard, self, '7i95'))
+		self.reloadPB.clicked.connect(partial(card.reloadCard, self, '7i95'))
+		self.pinsPB.clicked.connect(partial(card.getPins, self))
+
 
 	def buildfiles(self):
 		if not checkconfig.checkit(self):

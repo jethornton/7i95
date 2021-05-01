@@ -142,3 +142,10 @@ def build(parent):
 	for item in cpuSpeed:
 		parent.cpuSpeedCB.addItem(item[0], item[1])
 
+	firmware = [
+		['Select', False],
+		['5 StepGens ', '7i96d.bit']
+		]
+
+	for item in firmware:
+		parent.firmwareCB.addItem(item[0], item[1])
