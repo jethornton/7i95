@@ -30,11 +30,14 @@ def openini(parent, fileName = ''):
 			if iniVersion == parent.version:
 				loadini(parent)
 			else:
-				msg = f'The ini file version is {iniVersion}\n The Configuration Tool version is {parent.version}\nTry and open the ini?'
+				msg = (f'The ini file version is {iniVersion}\n'
+					'The Configuration Tool version is {parent.version}\n'
+					'Try and open the ini?')
 				if parent.errorMsg(msg, 'Version Difference'):
 					loadini(parent)
 		else:
-			msg = 'This ini file may have been built with an older version\nTry and open?'
+			msg = ('This ini file may have been built with an older version\n'
+				'Try and open?')
 			if parent.errorMsg(msg, 'No Version'):
 				loadini(parent)
 

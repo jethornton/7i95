@@ -4,6 +4,7 @@ def build(parent):
 	['10.10.10.10', '"10.10.10.10"'],
 	['192.168.1.121', '"192.168.1.121"']
 	]
+
 	for item in ipAddress:
 		parent.ipAddressCB.addItem(item[0], item[1])
 
@@ -19,6 +20,7 @@ def build(parent):
 		['V', 'V'],
 		['W', 'W']
 		]
+
 	for i in range(6):
 		for item in axes:
 			getattr(parent, f'axisCB_{i}').addItem(item[0], item[1])

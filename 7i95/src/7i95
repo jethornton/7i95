@@ -57,7 +57,7 @@ class MainWindow(QMainWindow):
 		self.extcmd = extcmd.extcmd()
 		#self.testing()
 		# for testing
-		loadini.openini(self, '/home/john/linuxcnc/configs/7i95/7i95.ini')
+		#loadini.openini(self, '/home/john/linuxcnc/configs/7i95/7i95.ini')
 		self.show()
 
 	def testing(self):
@@ -82,7 +82,13 @@ class MainWindow(QMainWindow):
 		self.configName.textChanged[str].connect(partial(utilities.configNameChanged, self))
 		self.spindleTypeCB.currentIndexChanged.connect(partial(utilities.spindleTypeChanged, self))
 		self.ssCardCB.currentIndexChanged.connect(partial(sscards.build, self))
+		self.actionNew.triggered.connect(partial(utilities.fileNew, self))
 		self.actionOpen.triggered.connect(partial(loadini.openini, self))
+		self.actionSavePins.triggered.connect(partial(card.savePins, self))
+		self.actionSaveSignals.triggered.connect(partial(card.saveSignals, self))
+		self.actionSaveParameters.triggered.connect(partial(card.saveParameters, self))
+		self.actionSave.triggered.connect(self.buildfiles)
+		self.actionSaveAs.triggered.connect(partial(utilities.fileSaveAs, self))
 		self.actionCheck.triggered.connect(partial(checkconfig.checkit, self))
 		self.actionBuild.triggered.connect(self.buildfiles)
 		for i in range(self.card['joints']):
@@ -118,6 +124,10 @@ class MainWindow(QMainWindow):
 		buildmisc.build(self)
 		if self.ssCardCB.currentData():
 			buildss.build(self)
+
+	def fileNew(self):
+		buildcombos.build(self)
+		buildmenus.build(self)
 
 	def errorMsg(self, text, title=None):
 		msgBox = QMessageBox()
