@@ -43,9 +43,14 @@ class MainWindow(QMainWindow):
 		if os.path.split(sys.argv[0])[0] == '/usr/bin':
 			self.lib_path = '/usr/lib/lib7i95'
 			print('Installed')
+			devel = False
+			if len(sys.argv) > 1:
+				if sys.argv[1] == 'devel':
+					devel = True
 		if os.path.split(sys.argv[0])[0] == '.':
 			self.lib_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
 			print('In Development')
+			devel = True
 		uic.loadUi(os.path.join(self.lib_path, '7i95.ui'), self)
 		self.version = '0.1.1'
 		self.emcVersion = '1.1'
@@ -56,12 +61,12 @@ class MainWindow(QMainWindow):
 		utilities.checks(self)
 		self.extcmd = extcmd.extcmd()
 		self.ladderOptionsList = utilities.plcOptions()
-		self.axes = 0
-
+		#self.axes = 0
 		self.setupConnections()
+
 		#self.testing()
-		# for testing
-		#loadini.openini(self, '/home/john/linuxcnc/configs/7i95/7i95.ini')
+		if devel:
+			loadini.openini(self, '/home/john/linuxcnc/configs/7i95/7i95.ini')
 		self.show()
 
 	def testing(self):
@@ -73,7 +78,6 @@ class MainWindow(QMainWindow):
 		self.positionOffsetCB.setCurrentIndex(1)
 		self.positionFeedbackCB.setCurrentIndex(1)
 		self.axisCB_0.setCurrentIndex(1)
-		#utilities.pidSetDefault(self)
 		self.driveCB_0.setCurrentIndex(3)
 		self.scale_0.setText('1000')
 		self.minLimit_0.setText('0')
@@ -111,7 +115,7 @@ class MainWindow(QMainWindow):
 		self.actionTabHelp.triggered.connect(partial(self.help, 0))
 		self.actionBuildHelp.triggered.connect(partial(self.help, 20))
 		self.actionPCHelp.triggered.connect(partial(self.help, 30))
-
+		self.copyPB.clicked.connect(partial(utilities.copyOutput, self))
 		self.cpuPB.clicked.connect(partial(pcinfo.cpuInfo, self))
 		self.nicPB.clicked.connect(partial(pcinfo.nicInfo, self))
 		self.calcNicPB.clicked.connect(partial(pcinfo.nicCalc, self))
@@ -132,10 +136,6 @@ class MainWindow(QMainWindow):
 		buildmisc.build(self)
 		if self.ssCardCB.currentData():
 			buildss.build(self)
-
-	def fileNew(self):
-		buildcombos.build(self)
-		buildmenus.build(self)
 
 	def errorMsg(self, text, title=None):
 		msgBox = QMessageBox()

@@ -95,7 +95,7 @@ def build(parent):
 		['Keling 4030', ['5000', '5000', '20000', '20000']]
 		]
 
-	for i in range(6):
+	for i in range(parent.card['joints']):
 		for item in drives:
 			getattr(parent, f'driveCB_{i}').addItem(item[0], item[1])
 
@@ -146,7 +146,8 @@ def build(parent):
 
 	firmware = [
 		['Select', False],
-		['6 StepGens ', '7i95d.bit']
+		['6 StepGens', '7i95d.bit'],
+		['3 StepGens 3 PWM/DIR', '7i95d3pwm.bit']
 		]
 
 	for item in firmware:

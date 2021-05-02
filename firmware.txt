@@ -1,0 +1,5 @@
+Here is a 7I95 configuration with the last 3 stepgens replaced with PWM/DIR
+I have included the changed pinout source as an example if you want to build
+/modify it yourself.
+(you also need to include the new source file in the top level file to build it)
+

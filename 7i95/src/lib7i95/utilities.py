@@ -1,5 +1,5 @@
 import os, subprocess
-from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtWidgets import QMessageBox, QApplication
 
 def isNumber(s):
 	try:
@@ -31,7 +31,7 @@ def axisChanged(parent):
 	else:
 		getattr(parent, f'axisType_{joint}').setText('')
 	coordList = []
-	for i in range(6):
+	for i in range(parent.card['joints']):
 		axisLetter = getattr(parent, f'axisCB_{i}').currentText()
 		if axisLetter != 'Select':
 			coordList.append(axisLetter)
@@ -180,5 +180,8 @@ def fileNew(parent):
 def fileSaveAs(parent):
 	parent.errorMsgOk('Change the Name,\n Then Save', 'Info!')
 
-
+def copyOutput(parent):
+	qclip = QApplication.clipboard()
+	qclip.setText(parent.outputPTE.toPlainText())
+	parent.statusbar.showMessage('Output copied to clipboard')
 

@@ -31,7 +31,7 @@ def openini(parent, fileName = ''):
 				loadini(parent)
 			else:
 				msg = (f'The ini file version is {iniVersion}\n'
-					'The Configuration Tool version is {parent.version}\n'
+					f'The Configuration Tool version is {parent.version}\n'
 					'Try and open the ini?')
 				if parent.errorMsg(msg, 'Version Difference'):
 					loadini(parent)
@@ -117,7 +117,7 @@ def loadini(parent):
 	for i in range(parent.card['outputs']):
 		iniList.append(['OUTPUT_PB', f'OUTPUT_PB_{i}', f'outputPB_{i}'])
 
-	iniList.append(['OPTIONS', 'INTRO_GRAPHIC', 'splashScreenCB'])
+	iniList.append(['OPTIONS', 'INTRO_GRAPHIC', 'introGraphicLE'])
 	iniList.append(['OPTIONS', 'INTRO_GRAPHIC_TIME', 'splashScreenSB'])
 	iniList.append(['OPTIONS', 'MANUAL_TOOL_CHANGE', 'manualToolChangeCB'])
 	iniList.append(['OPTIONS', 'CUSTOM_HAL', 'customhalCB'])
