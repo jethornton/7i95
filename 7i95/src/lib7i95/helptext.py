@@ -39,8 +39,8 @@ Configuration Name is letters, numbers, spaces (replaced by underscore)
 Version = 1.1 or higher
 
 IP Address 10.10.10.10 is recommended to avoid conflicts on your LAN
-	10.10.10.10 W2 Down W3 Up
-	192.168.1.121 W2 Down W3 Down
+	10.10.10.10 W2 Down W16 Down
+	192.168.1.121 W2 Down W17 Up
 
 Maximum Linear Velocity is in User Units per second.
 

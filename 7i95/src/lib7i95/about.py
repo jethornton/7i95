@@ -60,7 +60,7 @@ class Ui_about(object):
     def retranslateUi(self, about):
         _translate = QtCore.QCoreApplication.translate
         about.setWindowTitle(_translate("about", "About"))
-        self.label.setText(_translate("about", "7i76e Configuration Tool"))
+        self.label.setText(_translate("about", "7i95 Configuration Tool"))
         self.versionLB.setText(_translate("about", "TextLabel"))
         self.label_2.setText(_translate("about", "Author John Thornton"))
         self.label_3.setText(_translate("about", "Licence GPL3"))
