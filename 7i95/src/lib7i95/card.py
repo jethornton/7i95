@@ -62,7 +62,6 @@ def savePins(parent, item):
 	if not "0x48414c32" in subprocess.getoutput('ipcs'):
 		parent.errorMsgOk(f'LinuxCNC must be running\nthe {parent.configName.text()} configuration', 'Error')
 		return
-	print(f'Getting {item}')
 	parent.results = subprocess.getoutput(f"halcmd show {item}")
 	fp = os.path.join(parent.configPath, parent.configNameUnderscored + f'-{item}.txt')
 	with open(fp, 'w') as f:

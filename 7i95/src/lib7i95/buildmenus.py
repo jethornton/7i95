@@ -39,7 +39,7 @@ outputs = [{'Not Used':'Select'},
 ]
 
 def build(parent):
-	for i in range(24):
+	for i in range(parent.card['inputs']):
 		button = getattr(parent, f'inputPB_{i}')
 		menu = QMenu()
 		menu.triggered.connect(lambda action, button=button: button.setText(action.text()))
@@ -74,7 +74,7 @@ def build(parent):
 		add_menu(inputs, menu)
 		button.setMenu(menu)
 
-	for i in range(6):
+	for i in range(parent.card['outputs']):
 		button = getattr(parent, f'outputPB_{i}')
 		menu = QMenu()
 		menu.triggered.connect(lambda action, button=button: button.setText(action.text()))

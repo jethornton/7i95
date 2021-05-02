@@ -13,9 +13,6 @@
   <property name="windowTitle">
    <string/>
   </property>
-  <property name="styleSheet">
-   <string notr="true"/>
-  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -6142,13 +6139,6 @@ max speed</string>
              </property>
             </widget>
            </item>
-           <item row="7" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_16">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
            <item row="14" column="0">
             <widget class="QLabel" name="label_792">
              <property name="text">
@@ -6208,50 +6198,57 @@ max speed</string>
              </property>
             </widget>
            </item>
+           <item row="7" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_16">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
            <item row="8" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_17">
+            <widget class="QCheckBox" name="inputInvertCB_17">
              <property name="text">
               <string>Invert</string>
              </property>
             </widget>
            </item>
            <item row="9" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_18">
+            <widget class="QCheckBox" name="inputInvertCB_18">
              <property name="text">
               <string>Invert</string>
              </property>
             </widget>
            </item>
            <item row="10" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_19">
+            <widget class="QCheckBox" name="inputInvertCB_19">
              <property name="text">
               <string>Invert</string>
              </property>
             </widget>
            </item>
            <item row="11" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_20">
+            <widget class="QCheckBox" name="inputInvertCB_20">
              <property name="text">
               <string>Invert</string>
              </property>
             </widget>
            </item>
            <item row="12" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_21">
+            <widget class="QCheckBox" name="inputInvertCB_21">
              <property name="text">
               <string>Invert</string>
              </property>
             </widget>
            </item>
            <item row="13" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_22">
+            <widget class="QCheckBox" name="inputInvertCB_22">
              <property name="text">
               <string>Invert</string>
              </property>
             </widget>
            </item>
            <item row="14" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_23">
+            <widget class="QCheckBox" name="inputInvertCB_23">
              <property name="text">
               <string>Invert</string>
              </property>
@@ -6290,7 +6287,7 @@ max speed</string>
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_0">
+            <widget class="QCheckBox" name="inputInvertCB_0">
              <property name="text">
               <string>Invert</string>
              </property>
@@ -6473,76 +6470,6 @@ max speed</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_1">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_2">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="3" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_3">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="4" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_4">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_5">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_6">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_7">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_8">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_9">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="10" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_10">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
            <item row="14" column="1">
             <widget class="QPushButton" name="inputPB_14">
              <property name="text">
@@ -6574,13 +6501,6 @@ max speed</string>
              </property>
             </widget>
            </item>
-           <item row="14" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_14">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
            <item row="11" column="0">
             <widget class="QLabel" name="label_780">
              <property name="text">
@@ -6588,27 +6508,6 @@ max speed</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_11">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="13" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_13">
-             <property name="text">
-              <string>Invert</string>
-             </property>
-            </widget>
-           </item>
-           <item row="12" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_12">
-             <property name="text">
-              <string>Invert</string>
              </property>
             </widget>
            </item>
@@ -6656,8 +6555,106 @@ max speed</string>
              </property>
             </widget>
            </item>
+           <item row="1" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_1">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_2">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_3">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_4">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="5" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_5">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="6" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_6">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_7">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_8">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_9">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="10" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_10">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_11">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_12">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="13" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_13">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="2">
+            <widget class="QCheckBox" name="inputInvertCB_14">
+             <property name="text">
+              <string>Invert</string>
+             </property>
+            </widget>
+           </item>
            <item row="15" column="2">
-            <widget class="QCheckBox" name="inputInvertCb_15">
+            <widget class="QCheckBox" name="inputInvertCB_15">
              <property name="text">
               <string>Invert</string>
              </property>
@@ -6800,6 +6797,19 @@ max speed</string>
           <widget class="QComboBox" name="toolChangerTypeCB"/>
          </item>
         </layout>
+       </widget>
+       <widget class="QCheckBox" name="manualToolChangeCB">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>340</y>
+          <width>351</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>On Screen Prompt for Manual Tool Change</string>
+        </property>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
@@ -12167,19 +12177,6 @@ The Smart Serial Card configuration will not load from the ini file at this time
        <attribute name="title">
         <string>Options</string>
        </attribute>
-       <widget class="QCheckBox" name="manualToolChangeCB">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>30</y>
-          <width>351</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>On Screen Prompt for Manual Tool Change</string>
-        </property>
-       </widget>
        <widget class="QComboBox" name="debugCB">
         <property name="geometry">
          <rect>
@@ -12334,42 +12331,45 @@ The Smart Serial Card configuration will not load from the ini file at this time
          <rect>
           <x>530</x>
           <y>280</y>
-          <width>231</width>
-          <height>111</height>
+          <width>261</width>
+          <height>131</height>
          </rect>
         </property>
         <property name="title">
          <string>Splash Screen</string>
         </property>
         <layout class="QGridLayout" name="gridLayout_56">
-         <item row="0" column="0" colspan="2">
-          <widget class="QCheckBox" name="splashScreenCB">
-           <property name="text">
-            <string>Display Splash Screen</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
+         <item row="1" column="1">
           <widget class="QSpinBox" name="splashScreenSB"/>
          </item>
-         <item row="2" column="0">
+         <item row="1" column="0">
           <widget class="QLabel" name="label_360">
            <property name="text">
             <string>Display Seconds</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="0">
+         <item row="0" column="0">
           <widget class="QLabel" name="label_361">
            <property name="text">
             <string>Intro Graphic</string>
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
+         <item row="0" column="1">
           <widget class="QLineEdit" name="introGraphicLE">
            <property name="text">
             <string>emc2.gif</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <widget class="QLabel" name="label_54">
+           <property name="text">
+            <string>0 for no Intro Graphic</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
@@ -14966,8 +14966,8 @@ The Smart Serial Card configuration will not load from the ini file at this time
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>936</width>
-                 <height>660</height>
+                 <width>140</width>
+                 <height>122</height>
                 </rect>
                </property>
                <layout class="QGridLayout" name="gridLayout_41">
@@ -15579,7 +15579,6 @@ The Smart Serial Card configuration will not load from the ini file at this time
   <tabstop>homeSearchVel_4</tabstop>
   <tabstop>homeLatchVel_4</tabstop>
   <tabstop>homeIgnoreLimits_4</tabstop>
-  <tabstop>manualToolChangeCB</tabstop>
   <tabstop>pyvcpCB</tabstop>
   <tabstop>gladevcpCB</tabstop>
   <tabstop>debugCB</tabstop>

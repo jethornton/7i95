@@ -47,9 +47,8 @@ def build(parent):
 	iniContents.append(f'POSITION_FEEDBACK = {parent.positionFeedbackCB.currentData()}\n')
 	iniContents.append(f'MAX_FEED_OVERRIDE = {parent.maxFeedOverrideSB.value()}\n')
 	iniContents.append('CYCLE_TIME = 0.1\n')
-	if parent.splashScreenCB.isChecked():
-		iniContents.append(f'INTRO_GRAPHIC = {parent.introGraphicLE.text()}\n')
-		iniContents.append(f'INTRO_TIME = {parent.splashScreenSB.value()}\n')
+	iniContents.append(f'INTRO_GRAPHIC = {parent.introGraphicLE.text()}\n')
+	iniContents.append(f'INTRO_TIME = {parent.splashScreenSB.value()}\n')
 	iniContents.append('OPEN_FILE = ""\n')
 	if parent.pyvcpCB.isChecked():
 		iniContents.append(f'PYVCP = {parent.configNameUnderscored}.xml\n')
@@ -186,7 +185,7 @@ def build(parent):
 	iniContents.append('# DO NOT change the inputs text\n')
 	for i in range(24):
 		iniContents.append(f'INPUT_PB_{i} = {getattr(parent, f"inputPB_{i}").text()}\n')
-		iniContents.append(f'INPUT_INVERT_{i} = {getattr(parent, f"inputInvertCb_{i}").isChecked()}\n')
+		iniContents.append(f'INPUT_INVERT_{i} = {getattr(parent, f"inputInvertCB_{i}").isChecked()}\n')
 
 	# build the [OUTPUTS] section from pushbuttons
 	iniContents.append('\n[OUTPUT_PB]\n')

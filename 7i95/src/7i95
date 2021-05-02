@@ -47,18 +47,18 @@ class MainWindow(QMainWindow):
 			self.lib_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
 			print('In Development')
 		uic.loadUi(os.path.join(self.lib_path, '7i95.ui'), self)
-		self.version = '0.1.0'
+		self.version = '0.1.1'
 		self.emcVersion = '1.1'
 		self.setWindowTitle(f'7i95 Configuration Tool Version {self.version}')
 		self.card = {'type':'7i95', 'joints': 6, 'inputs': 24, 'outputs': 6}
+		buildmenus.build(self)
+		buildcombos.build(self)
+		utilities.checks(self)
+		self.extcmd = extcmd.extcmd()
 		self.ladderOptionsList = utilities.plcOptions()
 		self.axes = 0
 
-		buildcombos.build(self)
-		buildmenus.build(self)
-		utilities.checks(self)
 		self.setupConnections()
-		self.extcmd = extcmd.extcmd()
 		#self.testing()
 		# for testing
 		#loadini.openini(self, '/home/john/linuxcnc/configs/7i95/7i95.ini')

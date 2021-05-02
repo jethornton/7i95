@@ -66,7 +66,7 @@ def loadini(parent):
 	iniList.append(['TRAJ', 'COORDINATES', 'coordinatesLB'])
 	iniList.append(['TRAJ', 'MAX_LINEAR_VELOCITY', 'maxLinearVel'])
 
-	for i in range(6):
+	for i in range(parent.card['joints']):
 		iniList.append([f'JOINT_{i}', 'AXIS', f'axisCB_{i}'])
 		iniList.append([f'JOINT_{i}', 'STEPLEN', f'stepTime_{i}'])
 		iniList.append([f'JOINT_{i}', 'STEPSPACE', f'stepSpace_{i}'])
@@ -112,9 +112,9 @@ def loadini(parent):
 
 	for i in range(parent.card['inputs']):
 		iniList.append(['INPUT_PB', f'INPUT_PB_{i}', f'inputPB_{i}'])
-		iniList.append(['INPUT_PB', f'INPUT_INVERT_{i}', f'inputInvertCb_{i}'])
+		iniList.append(['INPUT_PB', f'INPUT_INVERT_{i}', f'inputInvertCB_{i}'])
 
-	for i in range(parent.card['inputs']):
+	for i in range(parent.card['outputs']):
 		iniList.append(['OUTPUT_PB', f'OUTPUT_PB_{i}', f'outputPB_{i}'])
 
 	iniList.append(['OPTIONS', 'INTRO_GRAPHIC', 'splashScreenCB'])

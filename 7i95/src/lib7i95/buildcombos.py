@@ -21,7 +21,7 @@ def build(parent):
 		['W', 'W']
 		]
 
-	for i in range(6):
+	for i in range(parent.card['joints']):
 		for item in axes:
 			getattr(parent, f'axisCB_{i}').addItem(item[0], item[1])
 
