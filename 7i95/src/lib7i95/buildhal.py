@@ -28,7 +28,7 @@ def build(parent):
 	halContents.append('num_stepgens=[HOSTMOT2](STEPGENS) ')
 	halContents.append('num_pwmgens=[HOSTMOT2](PWMS) ')
 	halContents.append('sserial_port_0=[HOSTMOT2](SSERIAL_PORT)"\n')
-	halContents.append('setp hm2_[HOSTMOT2](BOARD).0.watchdog.timeout_ns 25000000\n')
+	halContents.append(f'setp hm2_[HOSTMOT2](BOARD).0.watchdog.timeout_ns {parent.servoPeriodSB.value() * 5}\n')
 	halContents.append('\n# THREADS\n')
 	halContents.append('addf hm2_[HOSTMOT2](BOARD).0.read servo-thread\n')
 	halContents.append('addf motion-command-handler servo-thread\n')
