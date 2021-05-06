@@ -24,11 +24,13 @@ def build(parent):
 	halContents.append('loadrt hostmot2\n\n')
 	halContents.append('loadrt [HOSTMOT2](DRIVER) ')
 	halContents.append('board_ip=[HOSTMOT2](IPADDRESS) ')
-	halContents.append('config="num_encoders=[HOSTMOT2](ENCODERS) ')
-	halContents.append('num_stepgens=[HOSTMOT2](STEPGENS) ')
-	halContents.append('num_pwmgens=[HOSTMOT2](PWMS) ')
-	halContents.append('sserial_port_0=[HOSTMOT2](SSERIAL_PORT)"\n')
-	halContents.append(f'setp hm2_[HOSTMOT2](BOARD).0.watchdog.timeout_ns {parent.servoPeriodSB.value() * 5}\n')
+	if parent.stepgensCB.currentData():
+		halContents.append('num_stepgens=[HOSTMOT2](STEPGENS) ')
+	if parent.encodersCB.currentData():
+		halContents.append('config="num_encoders=[HOSTMOT2](ENCODERS) ')
+	if parent.pwmgensCB.currentData():
+		halContents.append('num_pwmgens=[HOSTMOT2](PWMS) ')
+	halContents.append(f'\nsetp hm2_[HOSTMOT2](BOARD).0.watchdog.timeout_ns {parent.servoPeriodSB.value() * 5}\n')
 	halContents.append('\n# THREADS\n')
 	halContents.append('addf hm2_[HOSTMOT2](BOARD).0.read servo-thread\n')
 	halContents.append('addf motion-command-handler servo-thread\n')
