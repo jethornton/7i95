@@ -21,6 +21,9 @@ def openini(parent, fileName = ''):
 		if fileName:
 			parent.outputPTE.appendPlainText(f'Loading {fileName[0]}')
 			iniFile = (fileName[0])
+		else:
+			parent.outputPTE.appendPlainText('Open File Cancled')
+			iniFile = ''
 	else: # we passed a file name and path for testing
 		iniFile = (fileName)
 
