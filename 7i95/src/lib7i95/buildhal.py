@@ -83,6 +83,7 @@ def build(parent):
 
 	halContents.append('\n# Standard I/O Block - EStop, Etc\n')
 	halContents.append('# create a signal for the estop loopback\n')
+	halContents.append('net estop-loopback iocontrol.0.emc-enable-in <= iocontrol.0.user-enable-out\n')
 
 	if parent.manualToolChangeCB.isChecked():
 		halContents.append('\n# create signals for tool loading loopback\n')
