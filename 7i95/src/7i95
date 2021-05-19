@@ -12,6 +12,7 @@ from lib7i95 import buildmenus
 from lib7i95 import sscards
 from lib7i95 import checkconfig
 from lib7i95 import loadini
+from lib7i95 import buildfiles
 from lib7i95 import buildini
 from lib7i95 import buildhal
 from lib7i95 import buildio
@@ -21,8 +22,8 @@ from lib7i95 import utilities
 from lib7i95 import card
 from lib7i95 import pcinfo
 from lib7i95 import extcmd
-from lib7i95.help import Ui_Dialog as helpDialog
 from lib7i95 import helptext
+from lib7i95.help import Ui_Dialog as helpDialog
 from lib7i95.about import Ui_about as aboutDialog
 
 class VersionError(QMainWindow):
@@ -61,10 +62,8 @@ class MainWindow(QMainWindow):
 		utilities.checks(self)
 		self.extcmd = extcmd.extcmd()
 		self.ladderOptionsList = utilities.plcOptions()
-		#self.axes = 0
 		self.setupConnections()
 
-		#self.testing()
 		if devel:
 			loadini.openini(self, '/home/john/linuxcnc/configs/7i95/7i95.ini')
 		self.show()
@@ -125,11 +124,11 @@ class MainWindow(QMainWindow):
 		self.reloadPB.clicked.connect(partial(card.reloadCard, self, '7i95'))
 		self.pinsPB.clicked.connect(partial(card.getPins, self))
 
-
 	def buildfiles(self):
 		if not checkconfig.checkit(self):
 			self.outputPTE.appendPlainText('Build Failed')
 			return
+		buildfiles.build(self)
 		buildini.build(self)
 		buildhal.build(self)
 		buildio.build(self)
