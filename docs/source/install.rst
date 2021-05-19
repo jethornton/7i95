@@ -23,6 +23,8 @@ If you get `bash: wget: command not found` you can install it from a terminal wi
 
 	sudo apt install wget
 
+Check the readme.md file for the latest deb and md5sum.
+
 Open the File Manager and right click on the file and open with Gdebi then install.
 
 If you don't have Gdebi installed you can install it from a terminal
